@@ -2,6 +2,9 @@ package linkedIn.core;
 
 import java.util.List;
 
+import com.lezas.entity.Adress;
+import com.lezas.entity.Comment;
+
 public class User {
 	
 	private String lastName;

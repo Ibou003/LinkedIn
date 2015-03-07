@@ -3,6 +3,8 @@ package linkedIn.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lezas.entity.Adress;
+
 public class Company {
 	
 	private String name;
