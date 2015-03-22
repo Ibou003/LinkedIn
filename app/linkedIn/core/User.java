@@ -2,7 +2,9 @@ package linkedIn.core;
 
 import java.util.List;
 
-
+/**
+ * @author Nourdine
+ */
 public class User {
 	
 	private String lastName;
