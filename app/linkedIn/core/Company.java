@@ -3,28 +3,28 @@ package linkedIn.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lezas.entity.Adress;
+
 
 public class Company {
 	
 	private String name;
 	private String mail;
 	private String phoneNumber;
-	private Adress adress;
+//	private Adress adress;
 	private String password;
 	private String photo;
 	private List<User> followers;
 	private String description;
 	private String siren_siret;
-	private List<Offer> offers;
+//	private List<Offer> offers;
 	private MailBox mailBox;
 	private List<Notification> notifications;
 	
-	public Company(String name, String mail, String phoneNumber, Adress adress, String password, String photo, String description, String siren_siret) {
+	public Company(String name, String mail, String phoneNumber, String password, String photo, String description, String siren_siret) {
 		this.name = name;
 		this.mail = mail;
 		this.phoneNumber = phoneNumber;
-		this.adress = adress;
+//		this.adress = adress;
 		this.password = password;
 		this.photo = photo;
 		this.description = description;
@@ -43,11 +43,11 @@ public class Company {
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	
+/*	
 	public Adress getAdress() {
 		return adress;
 	}
-	
+*/	
 	public String getPassword() {
 		return password;
 	}
@@ -67,11 +67,11 @@ public class Company {
 	public String getSiren_siret() {
 		return siren_siret;
 	}
-	
+/*	
 	public List<Offer> getOffers() {
 		return offers;
 	}
-	
+*/	
 	public MailBox getMailBox() {
 		return mailBox;
 	}
@@ -91,11 +91,11 @@ public class Company {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+/*	
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
-	
+*/	
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -118,14 +118,14 @@ public class Company {
 		}
 		followers.add(user);
 	}
-	
+/*	
 	public void addOffer(Offer offer){
 		if(offers.isEmpty()){
 			offers = new ArrayList<Offer>();
 		}
 		offers.add(offer);
 	}
-	
+*/	
 	public void addNotification(Notification notification){
 		if(notifications.isEmpty()){
 			notifications = new ArrayList<Notification>();
