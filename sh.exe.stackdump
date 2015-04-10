@@ -1,0 +1,10 @@
+MSYS-1.0.12 Build:2012-07-05 14:56
+Exception: STATUS_ACCESS_VIOLATION at eip=00747968
+eax=00000001 ebx=0028F0E8 ecx=007C4C5C edx=002D0000 esi=0028F0EC edi=00000000
+ebp=0028F0C0 esp=0028EF48 program=C:\Users\nasser\AppData\Local\GitHub\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\bin\sh.exe
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+0028F0C0  00747968  (00000004, 000000C4, 00000000, 00000000)
+77618739  0028F538  (6A909090, 87F06808, F0E87761, 8300027A)
+  12637 [main] sh 8992 handle_exceptions: Error while dumping state (probably corrupted stack)
