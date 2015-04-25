@@ -52,6 +52,7 @@ public class TestEstablishmentDao {
 		} catch (ConnexionException e) {
 			fail("will be no fails check you local configration of hibernate will be postgres localhost:5432, "
 					+ "bdd test, user postgres, pwd 0");
+			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
