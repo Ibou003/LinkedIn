@@ -10,14 +10,12 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
-)
-
-libraryDependencies ++= Seq(
+  javaWs,
+  "log4j" % "log4j" % "1.2.17",
   "org.apache.derby" % "derby" % "10.4.1.3",
-  "org.hibernate" % "hibernate-entitymanager" % "3.6.9.Final"
+  "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
+  "org.hibernate" % "hibernate-core" % "4.3.7.Final",
+  "org.hibernate" % "hibernate-entitymanager" % "4.3.7.Final"
 )
 
-val appDependencies = Seq(
-  "log4j" % "log4j" % "1.2.16"
-) 
+fork in run := true
