@@ -7,7 +7,7 @@ import play.*;
 import play.db.jpa.Transactional;
 import play.mvc.*;
 import views.html.*;
-import play.api.Logger;
+
 
 /**
  * @author nasser
@@ -19,7 +19,7 @@ public class Application extends Controller {
 
 	@Transactional
 	public static Result index() {
-
+		
 		CompanyDao companyDao = new CompanyDao();
 
 		Company company = companyDao.findById(1);
