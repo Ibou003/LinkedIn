@@ -1,13 +1,12 @@
 package dant.linkedin.dao;
 
 import dant.linkedin.core.Experience;
-import dant.tools.hibernate.CRUDDao;
-import dant.tools.hibernate.HibernateHelper;
+import play.db.jpa.JPA;
 
-public class ExperienceDao extends CRUDDao<Experience> {
+public class ExperienceDao{
 
-	public ExperienceDao(HibernateHelper helper) {
-		super("Experience", helper);
+
+	public Experience findById(Integer id) {
+		return JPA.em().find(Experience.class, id);
 	}
-
 }

@@ -1,13 +1,14 @@
 package dant.linkedin.dao;
 
 import dant.linkedin.core.Comment;
-import dant.tools.hibernate.CRUDDao;
-import dant.tools.hibernate.HibernateHelper;
+import play.db.jpa.JPA;
 
-public class CommentDao extends CRUDDao<Comment> {
 
-	public CommentDao(HibernateHelper helper) {
-		super("Comment", helper);
+
+public class CommentDao {
+
+	public Comment findById(Integer id) {
+		return JPA.em().find(Comment.class, id);
 	}
 
 }

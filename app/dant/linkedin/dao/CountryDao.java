@@ -1,13 +1,11 @@
 package dant.linkedin.dao;
 
 import dant.linkedin.core.Country;
-import dant.tools.hibernate.CRUDDao;
-import dant.tools.hibernate.HibernateHelper;
+import play.db.jpa.JPA;
 
-public class CountryDao extends CRUDDao<Country> {
+public class CountryDao {
 
-	public CountryDao(HibernateHelper helper) {
-		super("Country", helper);
+	public Country findById(Short id) {
+		return JPA.em().find(Country.class, id);
 	}
-
 }

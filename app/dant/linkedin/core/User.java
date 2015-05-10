@@ -77,13 +77,14 @@ public class User {
 	@JoinColumn(name = "user_id")
 	private List<Experience> experiences;
 
-	@JoinTable(name = "relation",
-		joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-		inverseJoinColumns = @JoinColumn(name = "friend_id", referencedColumnName = "id")
-	)
-	private Set<User> relations;
+//	@JoinTable(name = "relation",
+//		joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+//		inverseJoinColumns = @JoinColumn(name = "friend_id", referencedColumnName = "id")
+//	)
+//	private Set<User> relations;
 	
-	private Set<Message> messages;
+	
+//	private Set<Message> messages;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
@@ -97,8 +98,8 @@ public class User {
 	@JoinColumn(name = "user_id")
 	private Set<Document> documents;
 
-	@OneToOne
-	private BoxInternalMessage boxInternalMessage;
+//	@OneToOne
+//	private BoxInternalMessage boxInternalMessage;
 
 	public User() {
 	}
@@ -254,14 +255,6 @@ public class User {
 	}
 
 
-	public Set<User> getRelations() {
-		return relations;
-	}
-
-
-	public void setRelations(Set<User> relations) {
-		this.relations = relations;
-	}
 
 
 	public Set<Company> getCompanys() {
@@ -294,14 +287,6 @@ public class User {
 	}
 
 
-	public BoxInternalMessage getBoxInternalMessage() {
-		return boxInternalMessage;
-	}
-
-
-	public void setBoxInternalMessage(BoxInternalMessage boxInternalMessage) {
-		this.boxInternalMessage = boxInternalMessage;
-	}
 
 
 	@Override
@@ -313,20 +298,13 @@ public class User {
 				+ ", stateUser=" + stateUser + ", address=" + address
 				+ ", trainings=" + trainings + ", languages=" + languages
 				+ ", competences=" + competences + ", experiences="
-				+ experiences + ", relations=" + relations + ", companys="
+				+ experiences +  ", companys="
 				+ companys + ", posts=" + posts + ", documents=" + documents
-				+ ", boxInternalMessage=" + boxInternalMessage + "]";
+				+ ", boxInternalMessage=" + "]";
 	}
 
 
-	public Set<Message> getMessages() {
-		return messages;
-	}
 
-
-	public void setMessages(Set<Message> messages) {
-		this.messages = messages;
-	}
 
 	
 }

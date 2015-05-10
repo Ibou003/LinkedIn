@@ -1,13 +1,13 @@
 package dant.linkedin.dao;
 
 import dant.linkedin.core.Company;
-import dant.tools.hibernate.CRUDDao;
-import dant.tools.hibernate.HibernateHelper;
+import play.db.jpa.JPA;
 
-public class CompanyDao extends CRUDDao<Company> {
+public class CompanyDao {
 
-	public CompanyDao(HibernateHelper helper) {
-		super("Company", helper);
+
+	public Company findById(Integer id) {
+		return JPA.em().find(Company.class, id);
 	}
 
 }

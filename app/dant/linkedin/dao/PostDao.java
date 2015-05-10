@@ -1,13 +1,13 @@
 package dant.linkedin.dao;
 
 import dant.linkedin.core.Post;
-import dant.tools.hibernate.CRUDDao;
-import dant.tools.hibernate.HibernateHelper;
+import play.db.jpa.JPA;
 
-public class PostDao extends CRUDDao<Post> {
+public class PostDao{
 
-	public PostDao(HibernateHelper helper) {
-		super("Post", helper);
+
+	public Post findById(Integer id) {
+		return JPA.em().find(Post.class, id);
 	}
 
 }

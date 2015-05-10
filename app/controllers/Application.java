@@ -1,10 +1,13 @@
 package controllers;
 
+import dant.linkedin.core.Company;
+import dant.linkedin.dao.CommentDao;
+import dant.linkedin.dao.CompanyDao;
 import play.*;
+import play.db.jpa.Transactional;
 import play.mvc.*;
-
 import views.html.*;
-
+import play.api.Logger;
 
 /**
  * @author nasser
@@ -14,8 +17,14 @@ import views.html.*;
  */
 public class Application extends Controller {
 
-    public static Result index() {
-        return ok(index.render("Your new application is ready."));
-    }
+	@Transactional
+	public static Result index() {
+
+		CompanyDao companyDao = new CompanyDao();
+
+		Company company = companyDao.findById(1);
+
+		return ok(index.render("Your new application is ready." + company));
+	}
 
 }

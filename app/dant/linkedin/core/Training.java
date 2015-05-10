@@ -1,6 +1,8 @@
 package dant.linkedin.core;
 
-import java.sql.Timestamp;
+
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,11 +28,11 @@ public class Training {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_start", nullable = false)
-	private Timestamp dateStart;
+	private Date dateStart;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_end", nullable = false)
-	private Timestamp dateEnd;
+	private Date dateEnd;
 	
 
 	@Column(name = "degree", nullable = false, length = 256)
