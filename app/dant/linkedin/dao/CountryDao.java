@@ -9,7 +9,7 @@ public class CountryDao {
 		return JPA.em().find(Country.class, id);
 	}
 	
-//	public Country save(Country c) {
-//		return JPA.em().persist(c);
-//	}
+	public void save(Country c) {
+		JPA.em().persist(c);
+	}
 }

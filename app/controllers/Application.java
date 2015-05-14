@@ -1,12 +1,9 @@
 package controllers;
 
-import dant.linkedin.core.Company;
-import dant.linkedin.dao.CommentDao;
-import dant.linkedin.dao.CompanyDao;
-import play.*;
 import play.db.jpa.Transactional;
-import play.mvc.*;
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
 
 /**

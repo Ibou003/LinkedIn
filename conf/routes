@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST     /country/add                controllers.Countrys.add()
+POST    /country/add                controllers.Countrys.add()
 
 
 
