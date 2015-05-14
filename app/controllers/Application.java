@@ -19,12 +19,7 @@ public class Application extends Controller {
 
 	@Transactional
 	public static Result index() {
-		Logger.info("test log");
-		CompanyDao companyDao = new CompanyDao();
-
-		Company company = companyDao.findById(1);
-
-		return ok(index.render("Your new application is ready." + company));
+		return ok(index.render("Your new application is ready."));
 	}
 
 }

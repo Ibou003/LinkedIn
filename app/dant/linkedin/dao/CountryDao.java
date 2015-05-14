@@ -8,4 +8,8 @@ public class CountryDao {
 	public Country findById(Short id) {
 		return JPA.em().find(Country.class, id);
 	}
+	
+//	public Country save(Country c) {
+//		return JPA.em().persist(c);
+//	}
 }
