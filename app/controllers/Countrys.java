@@ -31,14 +31,15 @@ public class Countrys extends Controller
     return redirect(routes.Application.index());
   }
 
-  public static String get()
+  @play.db.jpa.Transactional
+  public static Result get()
   {
     CountryDao countryDao = new CountryDao();
 
     List<Country> countrys = countryDao.findAll();
     Map<String, List<Country>> data = new HashMap<String, List<Country>>();
     data.put("pays", countrys);
-    return toJson(data).toString();
+    return ok(toJson(data));
   }
 
 }
