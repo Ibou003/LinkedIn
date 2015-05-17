@@ -2,6 +2,7 @@ package dant.linkedin.services;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -30,6 +31,8 @@ public class CheckSendMail {
 	private String obj = null;
 	private String filePath = null;
 	private String fileName = null;
+	
+	private final String inputPath = new File("").getAbsolutePath()+File.separator+"input"+File.separator;
 
 	private final String username = LinkedInCsts.LINKEDIN_MAIL;
 	private final String password = LinkedInCsts.LINKEDIN_PWD;
@@ -41,7 +44,7 @@ public class CheckSendMail {
 		//dests.add("pol.patrick1411@gmail.com");
 		msg = "Ceci est un test !";
 		obj = "Envoie avec file";
-		filePath = "/net/srvlnx/home/dant2/2014-2015/ghansumn/Desktop/fichier.pdf";
+		filePath = inputPath+"LinkedIn.pdf";
 		fileName = "fileName";
 	}
 
