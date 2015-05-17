@@ -49,4 +49,100 @@ public class Training {
 	
 	@Column(name = "establishment_id", nullable = false)
 	private Integer establishmentId;
+	
+	public Training()
+  {
+  }
+
+  public Integer getId()
+  {
+    return id;
+  }
+
+  public void setId(Integer id)
+  {
+    this.id = id;
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
+  }
+
+  public Date getDateStart()
+  {
+    return dateStart;
+  }
+
+  public void setDateStart(Date dateStart)
+  {
+    this.dateStart = dateStart;
+  }
+
+  public Date getDateEnd()
+  {
+    return dateEnd;
+  }
+
+  public void setDateEnd(Date dateEnd)
+  {
+    this.dateEnd = dateEnd;
+  }
+
+  public String getDegree()
+  {
+    return degree;
+  }
+
+  public void setDegree(String degree)
+  {
+    this.degree = degree;
+  }
+
+  public String getDiscipline()
+  {
+    return discipline;
+  }
+
+  public void setDiscipline(String discipline)
+  {
+    this.discipline = discipline;
+  }
+
+  public String getDescription()
+  {
+    return description;
+  }
+
+  public void setDescription(String description)
+  {
+    this.description = description;
+  }
+
+  public Integer getUserId()
+  {
+    return userId;
+  }
+
+  public void setUserId(Integer userId)
+  {
+    this.userId = userId;
+  }
+
+  public Integer getEstablishmentId()
+  {
+    return establishmentId;
+  }
+
+  public void setEstablishmentId(Integer establishmentId)
+  {
+    this.establishmentId = establishmentId;
+  }
+	
+	
 }

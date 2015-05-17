@@ -1,6 +1,6 @@
 ﻿/*
 Created: 06/03/2015
-Modified: 10/04/2015
+Modified: 17/05/2015
 Project: dant
 Model: Linkedin
 Company: naaf.com
@@ -84,7 +84,8 @@ CREATE TABLE "users"(
  "number" Integer,
  "street_name" Character varying(256),
  "city" Character varying(256),
- "zip_code" Character varying(128)
+ "zip_code" Character varying(128),
+ "state_user" Character varying(128)
 )
 WITH (OIDS=FALSE)
 ;

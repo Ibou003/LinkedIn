@@ -24,4 +24,57 @@ public class Language {
 	
 	@Column(name = "user_id", nullable = false)
 	private Integer userId;
+	
+	public Language()
+  {
+    // TODO Auto-generated constructor stub
+  }
+
+  public Integer getId()
+  {
+    return id;
+  }
+
+  public void setId(Integer id)
+  {
+    this.id = id;
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
+  }
+
+  public String getDescription()
+  {
+    return description;
+  }
+
+  public void setDescription(String description)
+  {
+    this.description = description;
+  }
+
+  public Integer getUserId()
+  {
+    return userId;
+  }
+
+  public void setUserId(Integer userId)
+  {
+    this.userId = userId;
+  }
+
+  @Override
+  public String toString()
+  {
+    return "Language [name=" + name + "]";
+  }
+  
+	
 }
