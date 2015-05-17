@@ -21,6 +21,8 @@ import org.apache.commons.mail.MultiPartEmail;
 import org.junit.Before;
 import org.junit.Test;
 
+import dant.linkedin.utils.LinkedInCsts;
+
 public class CheckSendMail {
 
 	private List<String> dests;
@@ -28,9 +30,9 @@ public class CheckSendMail {
 	private String obj = null;
 	private String filePath = null;
 	private String fileName = null;
-	
-	private final String username = "linkedinDant@gmail.com";
-	private final String password = "linkedindantupmc";
+
+	private final String username = LinkedInCsts.LINKEDIN_MAIL;
+	private final String password = LinkedInCsts.LINKEDIN_PWD;
 	
 	@Before
 	public void setUp(){
