@@ -2,8 +2,7 @@ package dant.linkedin.dao;
 
 import java.util.List;
 import play.db.jpa.JPA;
-import dant.linkedin.core.Company;
-import dant.linkedin.core.Country;
+import dant.linkedin.core.Establishment;
 import dant.linkedin.core.Training;
 import dant.linkedin.core.User;
 
@@ -23,7 +22,7 @@ public class UserDao
   }
 
   @SuppressWarnings("unchecked")
-  public List<User> findByCompany(Company company)
+  public List<User> findByCompany(Establishment company)
   {
 
     String req = "select user from User user inner join user.experiences as exp where exp.establishment.id = :valeur";

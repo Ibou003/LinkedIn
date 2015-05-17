@@ -7,9 +7,9 @@ import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
-import dant.linkedin.core.Company;
+import dant.linkedin.core.Establishment;
 import dant.linkedin.core.User;
-import dant.linkedin.dao.CompanyDao;
+import dant.linkedin.dao.EstablishmentDao;
 import dant.linkedin.dao.UserDao;
 
 
@@ -26,8 +26,8 @@ public class Application extends Controller {
 
 		Logger.info("test log");
 		UserDao countryDao = new UserDao();
-		CompanyDao dao = new CompanyDao();
-		Company c = dao.findById(1);
+		EstablishmentDao dao = new EstablishmentDao();
+		Establishment c = dao.findById(1);
 		List<User> countrys = countryDao.findByCompany(c);
 
 		return ok(index.render("Your new application is ready." + countrys));
