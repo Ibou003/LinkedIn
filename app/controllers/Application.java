@@ -1,8 +1,12 @@
 package controllers;
 
+import java.util.List;
+
 import dant.linkedin.core.Company;
+import dant.linkedin.core.Country;
 import dant.linkedin.dao.CommentDao;
 import dant.linkedin.dao.CompanyDao;
+import dant.linkedin.dao.CountryDao;
 import play.*;
 import play.db.jpa.Transactional;
 import play.mvc.*;
@@ -20,11 +24,11 @@ public class Application extends Controller {
 	@Transactional
 	public static Result index() {
 		Logger.info("test log");
-		CompanyDao companyDao = new CompanyDao();
+		CountryDao countryDao = new CountryDao();
 
-		Company company = companyDao.findById(1);
+		List<Country> countrys = countryDao.findAll();
 
-		return ok(index.render("Your new application is ready." + company));
+		return ok(index.render("Your new application is ready." + countrys));
 	}
 
 }
