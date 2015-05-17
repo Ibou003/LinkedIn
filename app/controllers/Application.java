@@ -7,8 +7,10 @@ import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
-import dant.linkedin.core.Country;
-import dant.linkedin.dao.CountryDao;
+import dant.linkedin.core.Company;
+import dant.linkedin.core.User;
+import dant.linkedin.dao.CompanyDao;
+import dant.linkedin.dao.UserDao;
 
 
 /**
@@ -23,9 +25,10 @@ public class Application extends Controller {
 	public static Result index() {
 
 		Logger.info("test log");
-		CountryDao countryDao = new CountryDao();
-
-		List<Country> countrys = countryDao.findAll();
+		UserDao countryDao = new UserDao();
+		CompanyDao dao = new CompanyDao();
+		Company c = dao.findById(1);
+		List<User> countrys = countryDao.findByCompany(c);
 
 		return ok(index.render("Your new application is ready." + countrys));
 

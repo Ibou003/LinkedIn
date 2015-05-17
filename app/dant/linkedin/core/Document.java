@@ -92,5 +92,12 @@ public class Document {
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
+
+
+  @Override
+  public String toString()
+  {
+    return "Document [name=" + name + ", documentType=" + documentType + "]";
+  }
 	
 }

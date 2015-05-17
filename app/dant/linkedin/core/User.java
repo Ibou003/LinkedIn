@@ -2,17 +2,16 @@ package dant.linkedin.core;
 
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,10 +29,10 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "lastName", nullable = false, length = 128)
+	@Column(name = "last_name", nullable = false, length = 128)
 	private String lastName;
 
-	@Column(name = "firstName", nullable = false, length = 128)
+	@Column(name = "first_name", nullable = false, length = 128)
 	private String firstName;
 
 	@Column(name = "phone", nullable = true, length = 64)
@@ -56,20 +55,21 @@ public class User {
 	@JoinColumn(name = "country_id")
 	private Country country;
 
+	@Column(name = "state_user", nullable = false, length = 128)
 	@Enumerated(EnumType.STRING)
 	private StateUser stateUser;
 
 	private Address address;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL ,fetch=FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private List<Training> trainings;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private Set<Language> languages;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private Set<Competence> competences;
 
@@ -86,7 +86,7 @@ public class User {
 	
 //	private Set<Message> messages;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private Set<Company> companys;
 
@@ -287,21 +287,18 @@ public class User {
 	}
 
 
+  @Override
+  public String toString()
+  {
+    return "User [id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", phone=" + phone + ", mobile="
+        + mobile + ", description=" + description + ", email=" + email + ", password=" + password + ", country="
+        + country + ", stateUser=" + stateUser + ", address=" + address + ", trainings=" + trainings + ", languages="
+        + languages + ", competences=" + competences + ", experiences=" + experiences + ", companys=" + companys
+        + ", posts=" + posts + ", documents=" + documents + "]";
+  }
 
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", lastName=" + lastName + ", firstName="
-				+ firstName + ", phone=" + phone + ", mobile=" + mobile
-				+ ", description=" + description + ", email=" + email
-				+ ", password=" + password + ", country=" + country
-				+ ", stateUser=" + stateUser + ", address=" + address
-				+ ", trainings=" + trainings + ", languages=" + languages
-				+ ", competences=" + competences + ", experiences="
-				+ experiences +  ", companys="
-				+ companys + ", posts=" + posts + ", documents=" + documents
-				+ ", boxInternalMessage=" + "]";
-	}
+
 
 
 

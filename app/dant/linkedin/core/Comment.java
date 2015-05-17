@@ -32,9 +32,6 @@ public class Comment {
 
 	@Column(name = "post_id", nullable = true)
 	private Integer postId;
-
-	@Column(name = "offer_id", nullable = true)
-	private Integer offerId;
 	
 	public Comment() {
 	}
@@ -43,7 +40,7 @@ public class Comment {
 	public String toString() {
 		return "Comment [id=" + id + ", createDate=" + createDate
 				+ ", content=" + content + ", userId=" + userId + ", postId="
-				+ postId + ", offerId=" + offerId + "]";
+				+ postId + "]";
 	}
 	
 	

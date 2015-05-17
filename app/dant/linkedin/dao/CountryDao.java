@@ -19,6 +19,5 @@ public class CountryDao {
 	public List<Country> findAll(){
 		List<Country> l = JPA.em().createQuery("FROM Country").getResultList();
 		return l;
-
 	}
 }
