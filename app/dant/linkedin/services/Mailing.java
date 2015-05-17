@@ -6,10 +6,12 @@ import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
 
+import dant.linkedin.utils.LinkedInCsts;
+
 public class Mailing {
 
-	private final String username = "linkedinDant@gmail.com";
-	private final String password = "linkedindantupmc";
+	private final String username = LinkedInCsts.LINKEDIN_MAIL;
+	private final String password = LinkedInCsts.LINKEDIN_PWD;
 
 	public Mailing() {
 
