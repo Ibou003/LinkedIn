@@ -1,19 +1,23 @@
-@(message: String)
+ @(
+  message: String
+  )
 
 @main("Welcome to Play") {
 
-   
-    
-    <h1>Country</h1>
 
-	<!-- Formulaire de saisie : Countrys -->
-	<fieldset>
-		<legend>Nouveau Pays</legend>
-		<!--<form method="post" action="@routes.Countrys.add()">-->
-			<form method="post" action="/country/add">
-			<input name="name" placeholder="name">
-			<button type="submit">Ajouter le nouveau Pays</button>
-		</form>
-	</fieldset>
+<h1>Country</h1>
+
+<!-- Formulaire de saisie : Countrys -->
+<fieldset>
+	<legend>Nouveau Pays</legend>
+	<!--<form method="post" action="@routes.Countrys.add()">-->
+	<form method="post" action="/country/add">
+		<input name="name" placeholder="name">
+		<button type="submit">Ajouter le nouveau Pays</button>
+	</form>
+
+</fieldset>
+<h3>@message</h3>
+
 
 }
