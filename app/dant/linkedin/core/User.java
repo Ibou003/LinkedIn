@@ -2,6 +2,7 @@ package dant.linkedin.core;
 
 import java.util.List;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -77,14 +78,14 @@ public class User {
 	@JoinColumn(name = "user_id")
 	private List<Experience> experiences;
 
-//	@JoinTable(name = "relation",
-//		joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-//		inverseJoinColumns = @JoinColumn(name = "friend_id", referencedColumnName = "id")
-//	)
-//	private Set<User> relations;
-	
-	
-//	private Set<Message> messages;
+	//	@JoinTable(name = "relation",
+	//		joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+	//		inverseJoinColumns = @JoinColumn(name = "friend_id", referencedColumnName = "id")
+	//	)
+	//	private Set<User> relations;
+
+
+	//	private Set<Message> messages;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "user_id")
@@ -98,13 +99,13 @@ public class User {
 	@JoinColumn(name = "user_id")
 	private Set<Document> documents;
 
-//	@OneToOne
-//	private BoxInternalMessage boxInternalMessage;
+	//	@OneToOne
+	//	private BoxInternalMessage boxInternalMessage;
 
 	public User() {
 	}
 
-	
+
 	public int getId() {
 		return id;
 	}
@@ -287,15 +288,141 @@ public class User {
 	}
 
 
-  @Override
-  public String toString()
-  {
-    return "User [id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", phone=" + phone + ", mobile="
-        + mobile + ", description=" + description + ", email=" + email + ", password=" + password + ", country="
-        + country + ", stateUser=" + stateUser + ", address=" + address + ", trainings=" + trainings + ", languages="
-        + languages + ", competences=" + competences + ", experiences=" + experiences + ", companys=" + companys
-        + ", posts=" + posts + ", documents=" + documents + "]";
-  }
+	@Override
+	public String toString()
+	{
+		return "User [id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", phone=" + phone + ", mobile="
+				+ mobile + ", description=" + description + ", email=" + email + ", password=" + password + ", country="
+				+ country + ", stateUser=" + stateUser + ", address=" + address + ", trainings=" + trainings + ", languages="
+				+ languages + ", competences=" + competences + ", experiences=" + experiences + ", companys=" + companys
+				+ ", posts=" + posts + ", documents=" + documents + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((companys == null) ? 0 : companys.hashCode());
+		result = prime * result
+				+ ((competences == null) ? 0 : competences.hashCode());
+		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((documents == null) ? 0 : documents.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result
+				+ ((experiences == null) ? 0 : experiences.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((languages == null) ? 0 : languages.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((mobile == null) ? 0 : mobile.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
+		result = prime * result + ((stateUser == null) ? 0 : stateUser.hashCode());
+		result = prime * result + ((trainings == null) ? 0 : trainings.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (companys == null) {
+			if (other.companys != null)
+				return false;
+		} else if (!companys.equals(other.companys))
+			return false;
+		if (competences == null) {
+			if (other.competences != null)
+				return false;
+		} else if (!competences.equals(other.competences))
+			return false;
+		if (country == null) {
+			if (other.country != null)
+				return false;
+		} else if (!country.equals(other.country))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (documents == null) {
+			if (other.documents != null)
+				return false;
+		} else if (!documents.equals(other.documents))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (experiences == null) {
+			if (other.experiences != null)
+				return false;
+		} else if (!experiences.equals(other.experiences))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (id != other.id)
+			return false;
+		if (languages == null) {
+			if (other.languages != null)
+				return false;
+		} else if (!languages.equals(other.languages))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (mobile == null) {
+			if (other.mobile != null)
+				return false;
+		} else if (!mobile.equals(other.mobile))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		if (posts == null) {
+			if (other.posts != null)
+				return false;
+		} else if (!posts.equals(other.posts))
+			return false;
+		if (stateUser != other.stateUser)
+			return false;
+		if (trainings == null) {
+			if (other.trainings != null)
+				return false;
+		} else if (!trainings.equals(other.trainings))
+			return false;
+		return true;
+	}
 
 
 
@@ -303,5 +430,5 @@ public class User {
 
 
 
-	
+
 }
