@@ -24,7 +24,9 @@ public class UserDao
   @SuppressWarnings("unchecked")
   public List<User> findByCompany(Establishment company)
   {
-
+    if(company == null){
+       return null;
+    }
     String req = "select user from User user inner join user.experiences as exp where exp.establishment.id = :valeur";
     return JPA.em().createQuery(req).setParameter("valeur", company.getId()).getResultList();
   }
@@ -32,6 +34,9 @@ public class UserDao
   @SuppressWarnings("unchecked")
   public List<User> findByTraining(Training training)
   {
+    if(training == null){
+      return null;
+   }
     String req = "select user from User user inner join user.trainings as exp where exp.establishment.id = :valeur";
     return JPA.em().createQuery(req).setParameter("valeur", training.getId()).getResultList();
   }

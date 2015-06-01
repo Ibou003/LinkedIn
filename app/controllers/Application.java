@@ -35,7 +35,7 @@ public class Application extends Controller
 		Establishment c = dao.findById(1);
 		List<User> users = countryDao.findByCompany(c);
 
-    return ok(index.render(users.toString()));
+    return ok(index.render(users == null ? "" :users.toString()));
 
   }
 
