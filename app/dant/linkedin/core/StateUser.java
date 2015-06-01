@@ -1,5 +1,5 @@
 package dant.linkedin.core;
 
 public enum StateUser {
-	EN_TAVAIL, EN_CHOMAGE, EN_RECHERCHE;
+	AU_TRAVAIL, AU_CHOMAGE, EN_RECHERCHE;
 }

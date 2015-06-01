@@ -114,6 +114,45 @@ public class Experience {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dateEnd == null) ? 0 : dateEnd.hashCode());
+		result = prime * result
+				+ ((dateStart == null) ? 0 : dateStart.hashCode());
+		result = prime * result
+				+ ((establishment == null) ? 0 : establishment.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Experience other = (Experience) obj;
+		if (dateEnd == null) {
+			if (other.dateEnd != null)
+				return false;
+		} else if (!dateEnd.equals(other.dateEnd))
+			return false;
+		if (dateStart == null) {
+			if (other.dateStart != null)
+				return false;
+		} else if (!dateStart.equals(other.dateStart))
+			return false;
+		if (establishment == null) {
+			if (other.establishment != null)
+				return false;
+		} else if (!establishment.equals(other.establishment))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Experience [id=" + id + ", title=" + title + ", dateStart="
 				+ dateStart + ", dateEnd=" + dateEnd + ", current=" + current

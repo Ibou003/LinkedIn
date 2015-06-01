@@ -3,6 +3,7 @@ package dant.linkedin.dao;
 import java.util.List;
 import play.db.jpa.JPA;
 import dant.linkedin.core.Establishment;
+import dant.linkedin.core.Experience;
 import dant.linkedin.core.Training;
 import dant.linkedin.core.User;
 
@@ -24,8 +25,9 @@ public class UserDao
   @SuppressWarnings("unchecked")
   public List<User> findByCompany(Establishment company)
   {
-    if(company == null){
-       return null;
+    if (company == null)
+    {
+      return null;
     }
     String req = "select user from User user inner join user.experiences as exp where exp.establishment.id = :valeur";
     return JPA.em().createQuery(req).setParameter("valeur", company.getId()).getResultList();
@@ -34,10 +36,29 @@ public class UserDao
   @SuppressWarnings("unchecked")
   public List<User> findByTraining(Training training)
   {
-    if(training == null){
+    if (training == null)
+    {
       return null;
-   }
+    }
     String req = "select user from User user inner join user.trainings as exp where exp.establishment.id = :valeur";
     return JPA.em().createQuery(req).setParameter("valeur", training.getId()).getResultList();
   }
+
+  public UserDao()
+  {
+
+  }
+
+  @SuppressWarnings("unchecked")
+  public List<User> findByExperience(Experience experience)
+  {
+    if (experience == null)
+    {
+      return null;
+    }
+    String req = "select user from User user inner join user.exeperiences as exp where exp.establishment.id = :valeur";
+    return JPA.em().createQuery(req).setParameter("valeur", experience.getId()).getResultList();
+
+  }
+
 }
