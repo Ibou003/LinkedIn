@@ -5,6 +5,7 @@ import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
+import dant.linkedin.core.Training;
 import dant.linkedin.core.User;
 import dant.linkedin.dao.UserDao;
 
@@ -27,9 +28,12 @@ public class Application extends Controller
     Logger.info("test log");
 
 		UserDao countryDao = new UserDao();
-		User users = countryDao.authenticate("dantlinkedin@gmail.com", "password");
+		//User users = countryDao.authenticate("dantlinkedin@gmail.com", "password");
+		Training training = new Training();
+		training.setId(1);
 
-    return ok(index.render(users.toString()));
+		
+    return ok(index.render(countryDao.findByTraining(training).toString()));
 
   }
 

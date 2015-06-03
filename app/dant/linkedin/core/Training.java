@@ -3,12 +3,13 @@ package dant.linkedin.core;
 
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,8 +48,9 @@ public class Training {
 	@Column(name = "user_id", nullable = false)
 	private Integer userId;
 	
-	@Column(name = "establishment_id", nullable = false)
-	private Integer establishmentId;
+	@OneToOne
+  @JoinColumn(name = "establishment_id")
+  private Establishment establishment;
 	
 	public Training()
   {
@@ -134,49 +136,19 @@ public class Training {
     this.userId = userId;
   }
 
-  public Integer getEstablishmentId()
+  public Establishment getEstablishment()
   {
-    return establishmentId;
+    return establishment;
   }
 
-  public void setEstablishmentId(Integer establishmentId)
+  public void setEstablishment(Establishment establishment)
   {
-    this.establishmentId = establishmentId;
+    this.establishment = establishment;
   }
 
-@Override
-public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result
-			+ ((discipline == null) ? 0 : discipline.hashCode());
-	result = prime * result
-			+ ((establishmentId == null) ? 0 : establishmentId.hashCode());
-	return result;
-}
+  
 
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Training other = (Training) obj;
-	if (discipline == null) {
-		if (other.discipline != null)
-			return false;
-	} else if (!discipline.equals(other.discipline))
-		return false;
-	if (establishmentId == null) {
-		if (other.establishmentId != null)
-			return false;
-	} else if (!establishmentId.equals(other.establishmentId))
-		return false;
-	return true;
-}
-	
+
   
   
 	
