@@ -187,15 +187,16 @@ public class RecommendationUser {
 		int usersSize = users.size();
 
 		if(usersSize>nbUsersDesired){
-			for(int i = 0; i<nbUsersDesired; i++){
-				int rdm = (int) (Math.random()*usersSize+1);
+
+			int nbAjout = 0;
+			while(nbAjout!=nbUsersDesired){
+				int rdm = (int) (Math.random()*usersSize);
 				User user = (User) users.toArray()[rdm];
-				if(recommendedUser.contains(user) && currUser.equals(user)){
-					i--;
-				} else {
+				if(!recommendedUser.contains(user) && !currUser.equals(user)){
 					recommendedUser.add(user);
 					users.remove(user);
 					usersSize = users.size();
+					nbAjout++;
 				}
 			}
 		} else {
