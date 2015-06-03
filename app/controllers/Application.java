@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.List;
 import play.Logger;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
@@ -8,6 +9,7 @@ import views.html.index;
 import dant.linkedin.core.Training;
 import dant.linkedin.core.User;
 import dant.linkedin.dao.UserDao;
+import dant.linkedin.services.Searchs;
 
 
 
@@ -21,19 +23,34 @@ public class Application extends Controller
 {
 
 //  @Security.Authenticated(Secured.class)
-  @Transactional
+//  @Transactional
+  @play.db.jpa.Transactional
   public static Result index()
   {
-
+/*
     Logger.info("test log");
 
 		UserDao countryDao = new UserDao();
 		//User users = countryDao.authenticate("dantlinkedin@gmail.com", "password");
 		Training training = new Training();
 		training.setId(1);
-
+		*/
+		Searchs searcher = new Searchs();
+		searcher.displayUserTableData();
 		
-    return ok(index.render(countryDao.findByTraining(training).toString()));
+		try
+    {
+      searcher.doIndex();
+    }
+    catch (InterruptedException e)
+    {
+      e.printStackTrace();
+    }
+    
+		String consoleInput = "Lucas";
+		List<User> result = searcher.search(consoleInput);
+		//countryDao.findByTraining(training).toString()
+    return ok(index.render(result.toString()));
 
   }
 

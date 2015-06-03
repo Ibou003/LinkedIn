@@ -44,12 +44,13 @@ public class Authentication extends Controller
 
   public static Result login()
   {
-    //
+    
     return ok(login.render(""));
     /*
-     * play.data.Form<AuthenticatedUser> categoryForm = play.data.Form.form(AuthenticatedUser.class).bindFromRequest();
-     * data.put("status", Boolean.TRUE); data.put("user", categoryForm); return ok(toJson(data));
+     Form<AuthenticatedUser> categoryForm = form(AuthenticatedUser.class).bindFromRequest();
+     data.put("status", Boolean.TRUE); data.put("user", categoryForm); return ok(toJson(data));
      */
+     
   }
 
   // On recupere les informations de login (quand le user se "signe")
@@ -59,7 +60,7 @@ public class Authentication extends Controller
     Logger.info("*******************************authenticate***********************************");
     Map<String, Object> data = new HashMap<String, Object>();
 
-    final play.data.Form<AuthenticatedUser> loginForm = play.data.Form.form(AuthenticatedUser.class).bindFromRequest();
+    final  play.data.Form<AuthenticatedUser> loginForm =  play.data.Form.form(AuthenticatedUser.class).bindFromRequest();
     final AuthenticatedUser category = loginForm.get();
 
     Logger.info("*******************************loginForm : " + loginForm.toString());

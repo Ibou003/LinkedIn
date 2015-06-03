@@ -3,6 +3,7 @@ package dant.linkedin.dao;
 import java.util.List;
 import play.Logger;
 import play.db.jpa.JPA;
+import dant.linkedin.core.Country;
 import dant.linkedin.core.Establishment;
 import dant.linkedin.core.Experience;
 import dant.linkedin.core.Training;
@@ -82,6 +83,14 @@ public class UserDao
     Logger.info("*********************************User noon authenticate " + email);
     return null;
 
+  }
+  
+  public boolean save(User c) {
+    if( c != null){
+      JPA.em().persist(c);
+      return true;
+    }
+    return false;
   }
 
 }

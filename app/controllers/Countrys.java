@@ -21,8 +21,9 @@ import controllers.Secured;
 public class Countrys extends Controller
 {
 
-  @Security.Authenticated(Secured.class)
+ 
   @Transactional
+  @Security.Authenticated(Secured.class)
   public static Result add()
   {
     final Form<Country> categoryForm = play.data.Form.form(Country.class).bindFromRequest();

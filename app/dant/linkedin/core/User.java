@@ -2,7 +2,6 @@ package dant.linkedin.core;
 
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,11 +16,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Analyze;
+import views.html.index;
+
+
 /**
  * @author Nourdine
  */
 
 @Entity
+@Indexed
 @Table(name = "users")
 public class User {
 
@@ -125,7 +133,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-
+	@Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
 	public String getFirstName() {
 		return firstName;
 	}
