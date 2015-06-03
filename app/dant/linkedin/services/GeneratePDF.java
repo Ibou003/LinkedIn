@@ -46,12 +46,12 @@ public class GeneratePDF {
 		// step 1
 		Document document = new Document(PageSize.A4);
 		// step 2
-		PdfWriter.getInstance(document, new FileOutputStream(OUTPUT_PATH+File.separator+nomCV));
+		PdfWriter.getInstance(document, new FileOutputStream(OUTPUT_PATH+File.separator+nomCV+".pdf"));
 		// step 3
 		document.open();
 
-		System.out.println(document.getPageSize().getHeight() + " : "
-				+ document.getPageSize().getWidth());
+//		System.out.println(document.getPageSize().getHeight() + " : "
+//				+ document.getPageSize().getWidth());
 
 		// Photo du CV
 		Image userImage = Image

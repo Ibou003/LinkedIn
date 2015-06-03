@@ -12,6 +12,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfReader;
 
 import dant.linkedin.core.User;
 import dant.linkedin.dao.UserDao;
@@ -30,7 +31,7 @@ public class GenerateCV extends Controller{
 		GeneratePDF cv = new GeneratePDF();
 		cv.createPdf(user, 0, "cv");
 		
-		File cvPDF = new File(OUTPUT_PATH+File.separator+"cv");
+		PdfReader cvPDF = new PdfReader(OUTPUT_PATH+File.separator+"cv");
 		
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("status", Boolean.TRUE);
