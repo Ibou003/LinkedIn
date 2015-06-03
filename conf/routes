@@ -15,9 +15,19 @@ GET 	/logout 					controllers.Authentication.logout()
 #mailing
 POST 	/mailing 					controllers.Mails.send()
 
+
 #mailing
 POST 	/userAdd 					controllers.Users.add()
 POST	/experienceAdd				controllers.Users.experienceAdd()
+
+#recommendation
+
+GET     /recommended				controllers.RecommendedUser.get()
+
+#CV
+
+GET 	/generateCV					controllers.GenerateCV.get()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

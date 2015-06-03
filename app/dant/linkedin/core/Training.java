@@ -146,6 +146,14 @@ public class Training {
     this.establishment = establishment;
   }
 
+@Override
+public String toString() {
+	return "Training [id=" + id + ", name=" + name + ", dateStart=" + dateStart
+			+ ", dateEnd=" + dateEnd + ", degree=" + degree + ", discipline="
+			+ discipline + ", description=" + description + ", userId="
+			+ userId + ", establishment=" + establishment + "]";
+}
+
   
 
 

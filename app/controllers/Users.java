@@ -10,6 +10,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import dant.linkedin.core.Country;
 import dant.linkedin.core.Experience;
+import dant.linkedin.core.StateUser;
 import dant.linkedin.core.User;
 import dant.linkedin.dao.CountryDao;
 import dant.linkedin.dao.UserDao;
@@ -31,7 +32,7 @@ public class Users extends Controller
     Map<String, Object> data = new HashMap<String, Object>();
     final User category = categoryForm.get();
     UserDao dao = new UserDao();
-    
+    category.setStateUser(StateUser.EN_RECHERCHE);
     data.put("status", dao.save(category));
     return ok(toJson(data));
    

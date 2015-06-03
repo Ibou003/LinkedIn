@@ -37,11 +37,11 @@ public class RecommendationUser {
 		 * T -> Training
 		 * C -> Competence
 		 */
-		List<User> userWithSameETC = new ArrayList<User>();
-		List<User> userWithSameET = new ArrayList<User>();
-		List<User> userWithSameE = new ArrayList<User>();
-		List<User> userWithSameTC = new ArrayList<User>();
-		List<User> userWithSameT = new ArrayList<User>();
+		Set<User> userWithSameETC = new HashSet<User>();
+		Set<User> userWithSameET = new HashSet<User>();
+		Set<User> userWithSameE = new HashSet<User>();
+		Set<User> userWithSameTC = new HashSet<User>();
+		Set<User> userWithSameT = new HashSet<User>();
 
 		//Get the other users with the same training and experience
 		List<Training> currUserTrainings = currUser.getTrainings();
@@ -71,13 +71,10 @@ public class RecommendationUser {
 		Set<User> users = new HashSet<User>();
 
 		for(Experience experience : experiences){
-			List<User> userWithSameExp = userDao.findByExperience(experience);
+			List<User> userWithSameExp = userDao.findByCompany(experience.getEstablishment());
 
 			for(User user : userWithSameExp){
-				int indexExp = user.getExperiences().indexOf(experience);
-				Experience userExp = user.getExperiences().get(indexExp);
-
-				if(experience.equals(userExp)){
+				if(!users.contains(user)){
 					users.add(user);
 				}
 			}
@@ -94,14 +91,17 @@ public class RecommendationUser {
 		Set<User> users = new HashSet<User>();
 
 		for(Training training : trainings){
+
 			List<User> userWithSameTraining = userDao.findByTraining(training);
 
 			for(User user : userWithSameTraining){
 				int indexTraining = user.getTrainings().indexOf(training);
-				Training userTraining = user.getTrainings().get(indexTraining);
+				if(indexTraining>=0){
+					Training userTraining = user.getTrainings().get(indexTraining);
 
-				if(training.equals(userTraining)){
-					users.add(user);
+					if(training.equals(userTraining)){
+						users.add(user);
+					}
 				}
 			}
 		}
@@ -117,7 +117,7 @@ public class RecommendationUser {
 	 * @param userWithSameExperiences correspond to the users with same experiences
 	 * @param userWithSameTrainings correspond to the users with same training
 	 */
-	private void userWithSameETC_ET_E(List<User> userWithSameETC, List<User> userWithSameET, List<User> userWithSameE,
+	private void userWithSameETC_ET_E(Set<User> userWithSameETC, Set<User> userWithSameET, Set<User> userWithSameE,
 			Set<User> userWithSameExperiences, Set<User> userWithSameTrainings) {
 
 		for(User user : userWithSameExperiences){
@@ -130,8 +130,6 @@ public class RecommendationUser {
 			} else {
 				userWithSameE.add(user);
 			}
-			userWithSameExperiences.remove(user);
-			userWithSameTrainings.remove(user);
 		}
 	}
 
@@ -141,7 +139,7 @@ public class RecommendationUser {
 	 * @param userWithSameT will be filled with the users that possess a common training
 	 * @param userWithSameTrainings correspond to the users with the same training
 	 */
-	private void userWithSameTC_T(List<User> userWithSameTC, List<User> userWithSameT, Set<User> userWithSameTrainings){
+	private void userWithSameTC_T(Set<User> userWithSameTC, Set<User> userWithSameT, Set<User> userWithSameTrainings){
 
 		for(User user : userWithSameTrainings){
 			if(compare2UsersCompetences(user)){
@@ -149,9 +147,7 @@ public class RecommendationUser {
 			} else {
 				userWithSameT.add(user);
 			}
-			userWithSameTrainings.remove(user);
 		}
-
 
 	}
 
@@ -163,6 +159,7 @@ public class RecommendationUser {
 	private boolean compare2UsersCompetences(User user){
 		Set<Competence> currUserCompetences = currUser.getCompetences();
 		Set<Competence> userCompetences = user.getCompetences();
+
 
 		for(Competence competence : currUserCompetences){
 			if(userCompetences.contains(competence)){
@@ -186,19 +183,20 @@ public class RecommendationUser {
 	 * @param users correspond to a list of users of one of the above categories
 	 * @param nbUsersDesired the number of the user we want from the users list
 	 */
-	private void fillRecommendedUsersCollection(Set<User> recommendedUser, List<User> users, int nbUsersDesired){
+	private void fillRecommendedUsersCollection(Set<User> recommendedUser, Set<User> users, int nbUsersDesired){
 		int usersSize = users.size();
-		
+
 		if(usersSize>nbUsersDesired){
-			for(int i = 0; i<nbUsersDesired; i++){
-				int rdm = (int) (Math.random()*usersSize+1);
-				User user = users.get(rdm);
-				if(recommendedUser.contains(user)){
-					i--;
-				} else {
+
+			int nbAjout = 0;
+			while(nbAjout!=nbUsersDesired){
+				int rdm = (int) (Math.random()*usersSize);
+				User user = (User) users.toArray()[rdm];
+				if(!recommendedUser.contains(user) && !currUser.equals(user)){
 					recommendedUser.add(user);
 					users.remove(user);
 					usersSize = users.size();
+					nbAjout++;
 				}
 			}
 		} else {
