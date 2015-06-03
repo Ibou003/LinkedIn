@@ -1,10 +1,12 @@
- @(
-  message: String
-  )
+@(
+message: String
+
+)
 
 @main("Welcome to Play") {
     
     <p>@message</p>
+  
 
 <h1>Country</h1>
 
@@ -16,6 +18,22 @@
 		<input name="name" placeholder="name">
 		<button type="submit">Ajouter le nouveau Pays</button>
 	</form>
+
+</fieldset>
+
+<h1>MAIL</h1>
+
+<fieldset>
+	<legend>Nouveau MAIL</legend>
+
+	<form method="post" action="/mailing">
+		<input name="dests" placeholder="dests">
+		<input name="msg" placeholder="msg">
+		<input name="filePath" placeholder="filePath">
+		<input name="fileName" placeholder="fileName">
+		<button type="submit">SEND</button>
+	</form>
+
 
 </fieldset>
 

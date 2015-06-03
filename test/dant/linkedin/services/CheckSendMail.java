@@ -44,8 +44,11 @@ public class CheckSendMail {
 		//dests.add("pol.patrick1411@gmail.com");
 		msg = "Ceci est un test !";
 		obj = "Envoie avec file";
-		filePath = inputPath+"LinkedIn.pdf";
-		fileName = "fileName";
+		//filePath = inputPath+"LinkedIn.pdf";
+		//fileName = "fileName";
+		filePath = "";
+    
+		fileName = "";
 	}
 
 	@Test
@@ -53,11 +56,12 @@ public class CheckSendMail {
 
 		Mailing mailing = new Mailing();
 		mailing.sendMailToAll(dests, msg, obj, null, fileName);
-
+/*
 		EmailAttachment attachment = mailing.createAttachment(filePath, fileName);
 
 		assertEquals(filePath, attachment.getPath());
 		assertEquals(fileName, attachment.getName());
+		*/
 
 	}
 
@@ -66,12 +70,14 @@ public class CheckSendMail {
 
 		Mailing mailing = new Mailing();
 		MultiPartEmail email = null;
-		EmailAttachment attachment = mailing.createAttachment(filePath, fileName);
+		//EmailAttachment attachment = mailing.createAttachment(filePath, fileName);
 		for(String dest : dests){
 			email = mailing.createMail(dest, obj, msg);
+			/*
 			if(attachment != null){
 				email.attach(attachment);
 			}
+			*/
 			email.send();
 			assertEquals(obj, email.getSubject());
 			

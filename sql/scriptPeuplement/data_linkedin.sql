@@ -19,12 +19,12 @@ insert into country(name)
 
 
 --Users
-select * from users   ;
+select * from users ;
 
 insert into users (last_name, first_name, phone, mobile, description, email, password, country_id, number, street_name, city, zip_code,state_user)
 values
-('linkedin', 'linkedin', '0640356474', '0640356483', 'systeme linkedin', 'dantlinkedin@gmail.com', 'password' , 1, 6, 'place jussieu', 'Paris', '75006','EN_TAVAIL'),
-('admin-linkedin', 'admin-linkedin', '0640356483', '0640356477', 'systeme linkedin', 'adminlinkedin@gmail.com', 'password' , 1, 6, 'place jussieu', 'Paris', '75006','EN_TAVAIL'),
+('linkedin', 'linkedin', '0640356474', '0640356483', 'systeme linkedin', 'dantlinkedin@gmail.com', 'password' , 1, 6, 'place jussieu', 'Paris', '75006','AU_TRAVAIL'),
+('admin-linkedin', 'admin-linkedin', '0640356483', '0640356477', 'systeme linkedin', 'adminlinkedin@gmail.com', 'password' , 1, 6, 'place jussieu', 'Paris', '75006','AU_TRAVAIL'),
 ('test1', 'test1', '0640356474', '0640356483', 'test', 'test1@gmail.com', 'password' , 1, 6, 'place jussieu', 'Paris', '75006','EN_CHOMAGE'),
 ('test2', 'test', '0640356483', '0640356477', 'systeme linkedin', 'test2@gmail.com', 'password' , 1, 6, 'place jussieu', 'Paris', '75006','EN_RECHERCHE');
 

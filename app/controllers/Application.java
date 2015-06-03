@@ -1,16 +1,11 @@
 package controllers;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import play.Logger;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
-import dant.linkedin.core.Establishment;
 import dant.linkedin.core.User;
-import dant.linkedin.dao.EstablishmentDao;
 import dant.linkedin.dao.UserDao;
 
 
@@ -24,6 +19,7 @@ import dant.linkedin.dao.UserDao;
 public class Application extends Controller
 {
 
+//  @Security.Authenticated(Secured.class)
   @Transactional
   public static Result index()
   {
@@ -31,11 +27,9 @@ public class Application extends Controller
     Logger.info("test log");
 
 		UserDao countryDao = new UserDao();
-		EstablishmentDao dao = new EstablishmentDao();
-		Establishment c = dao.findById(1);
-		List<User> users = countryDao.findByCompany(c);
+		User users = countryDao.authenticate("dantlinkedin@gmail.com", "password");
 
-    return ok(index.render(users == null ? "" :users.toString()));
+    return ok(index.render(users.toString()));
 
   }
 

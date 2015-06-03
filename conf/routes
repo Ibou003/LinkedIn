@@ -7,6 +7,14 @@ GET     /                           controllers.Application.index()
 POST    /country/add                controllers.Countrys.add()
 GET     /country/get                controllers.Countrys.get()
 
+# Authentication
+GET 	/login 						controllers.Authentication.login()
+POST 	/login 						controllers.Authentication.authenticate()
+GET 	/logout 					controllers.Authentication.logout()
+
+#mailing
+POST 	/mailing 					controllers.Mails.send()
+
 
 
 # Map static resources from the /public folder to the /assets URL path

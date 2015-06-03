@@ -1,0 +1,21 @@
+@(
+message: String
+
+)
+
+@main("Welcome to Play") {
+    
+    <p>@message</p>
+
+	<fieldset>
+		<legend>connexion</legend>
+		<!--<form method="post" action="@routes.Authentication.authenticate()">-->
+		<form method="post" action="/login">
+			<input name="email" placeholder="email">
+			<input name="password" placeholder="password">
+			
+			<button type="submit">Ajouter le nouveau Pays</button>
+		</form>
+	
+	</fieldset>
+}

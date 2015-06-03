@@ -1,11 +1,13 @@
 package dant.linkedin.dao;
 
 import java.util.List;
+import play.Logger;
 import play.db.jpa.JPA;
 import dant.linkedin.core.Establishment;
 import dant.linkedin.core.Experience;
 import dant.linkedin.core.Training;
 import dant.linkedin.core.User;
+import dant.linkedin.utils.Utility;
 
 public class UserDao
 {
@@ -58,6 +60,27 @@ public class UserDao
     }
     String req = "select user from User user inner join user.exeperiences as exp where exp.establishment.id = :valeur";
     return JPA.em().createQuery(req).setParameter("valeur", experience.getId()).getResultList();
+
+  }
+  
+ 
+  public User authenticate(String email, String pwd)
+  {
+    if (Utility.isNotNull(email) && Utility.isNotNull(pwd))
+    {
+      String req = "select user from User user where user.email = :valeur1 and user.password = :valeur2";
+      List<User> usr =  JPA.em().createQuery(req).setParameter("valeur1", email).setParameter("valeur2", pwd).getResultList();
+      Logger.info("connexion avec " + email);
+      Logger.info(usr.toString());
+      if(usr != null && usr.size()>0){
+        Logger.info("*********************************User authenticate " + email);
+        return usr.get(0);
+      }
+      Logger.info("*********************************User noon authenticate " + email);
+      return null;
+    }
+    Logger.info("*********************************User noon authenticate " + email);
+    return null;
 
   }
 

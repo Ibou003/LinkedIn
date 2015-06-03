@@ -1,12 +1,12 @@
 package dant.linkedin.services;
 import java.util.List;
-
+import java.util.Properties;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
-
 import dant.linkedin.utils.LinkedInCsts;
+import dant.linkedin.utils.Utility;
 
 public class Mailing {
 
@@ -18,9 +18,8 @@ public class Mailing {
 	}
 
 	public void sendMailToAll(List<String> dests, String msg, String obj, String filePath, String fileName) throws EmailException{
-
 		EmailAttachment attachment = null;
-		if(filePath != null){
+		if(Utility.isNotNull(filePath)){
 			attachment = createAttachment(filePath, fileName);
 		}
 		MultiPartEmail email = null;
